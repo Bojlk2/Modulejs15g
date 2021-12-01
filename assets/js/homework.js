@@ -1,72 +1,48 @@
-/** 
- * Ejercicio 1
- * imprimir en consola todos los numeros pares entre 1 y 100
- * -> 2
- * -> 4
- * -> 100
-*/
-
-let par = 0
-
-for(i = 1; i <= 100; i++){
-    if(par = i % 2){
-        i += 1
-        console.log(i)
+// Función 1:
+// valor por defecto 10
+// Imprimir en consola las tablas de multiplicar del 1 al 10 
+function tables10(){
+    let a = parseInt(prompt('Introduce la tabla de multiplicar que quieres ver', 10))
+    for(i = a; i <= a; i++){
+        for(b = 1; b <= 10; b++){
+            console.log(`${a} x ${b} = ${a * b}`)
+        }
     }
+}
+
+// Función 2:
+// valor por defecto 10
+// Imprimir en consola la suma de 1 a N, siendo N un numero entre 1 y 100
+function adding10(numero=10){
     
+    let counter = 1
+    let suma = 0
+    if(!isNaN(numero) && numero > 0 &&  numero <= 100){
+            
+            while(counter <= numero){
+                suma += counter
+                counter += 1
+            }
+            
+            console.log(`La suma es: ${suma}`)
+    }
 }
+// Función 3:
+// valor por defecto "1234"
+// Imprimir en consola la suma total de todos los digitos de una cantidad 
+// p.ej. "1234" -> 10
 
-/**
- * Ejercicio 2
- * Pedir al usuario un string
- * Invertir el orden e imprimir en consola
- * Entrada: "reverse"
- * Salida: -> esrever
- * hint: https://www.w3schools.com/jsref/jsref_length_string.asp
-*/
 
-let word = prompt('Introduzca una palabra')
-let wr = ''
-
-for(j = word.length -1; j >= 0; j--){
-    wr += word[j]
+// Función 4:
+// valor por defecto 3 y 5, sino el que ponga el usuario 
+// Imprimir en consola la suma de los múltiplos de 3 y 5 contenidos entre el 1 y 100
+// -> 233168
+function multiplo35(a=3,b=5){
+    let mult = 0
+    for(i = 1; i <= 100; i++){
+        if(i % a === 0 || i % b === 0){
+            mult += + i
+        }
+    }
+    console.log(`La suma de los mutliplos es = ${mult}`)
 }
-console.log(wr)
-
-/**
- * Ejercicio 3 
- * Declarar un string de al menos 2 palabras
- * Imprimir en consola el string separado por guiones en cada palabra
- * "hola koders"
- * "hola-koders"
- * hint: https://www.w3schools.com/jsref/jsref_replace.asp
- */
-
-let phrase = prompt('Introduce mas de 2 palabras').replace(/ /gi,'-')
-console.log(phrase)
-
-/**
- * Ejercicio 4
- * Declarar un string con un correo electrónico
- * Enmascarar con "*" el bloque del usuario
- * "jorgec@kodemia.mx"
- * "*****@kodemia.mx"
- * 
- * hint: https://www.w3schools.com/jsref/jsref_slice_string.asp
- * hint: https://www.w3schools.com/jsref/jsref_indexof.asp
- */
-
-let mail = prompt('Introdroduce tu correo electronico')
-let ocult = ''
-let pri = 0
-let reg = /\d.*\d/
-for(k = mail.length -1; k >= 0; k--){
-    ocult += mail[k]
-}
-pri = ocult.indexOf('@')
-ocult = ocult.slice(pri + 1)
-ocult = ocult.replace(/[a-z,0-9]/gi, '*')
-for
-console.log(pri)
-console.log(ocult)
-
