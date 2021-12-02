@@ -1,48 +1,56 @@
-// Función 1:
-// valor por defecto 10
-// Imprimir en consola las tablas de multiplicar del 1 al 10 
-function tables10(){
-    let a = parseInt(prompt('Introduce la tabla de multiplicar que quieres ver', 10))
-    for(i = a; i <= a; i++){
-        for(b = 1; b <= 10; b++){
-            console.log(`${a} x ${b} = ${a * b}`)
-        }
-    }
-}
-
-// Función 2:
-// valor por defecto 10
-// Imprimir en consola la suma de 1 a N, siendo N un numero entre 1 y 100
-function adding10(numero=10){
+/**
+ * Escribir un arrow function que invierta una oracion
+ * hint: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse
+ * hint: https://www.w3schools.com/jsref/jsref_join.asp
+ */
+const sentenceReverse = (sentence='Esta es una función que invierte la oración') => {
+    let wordsSentence = sentence.split('')
+    let reversed = wordsSentence.reverse().join('')
+    return reversed
     
-    let counter = 1
-    let suma = 0
-    if(!isNaN(numero) && numero > 0 &&  numero <= 100){
-            
-            while(counter <= numero){
-                suma += counter
-                counter += 1
-            }
-            
-            console.log(`La suma es: ${suma}`)
-    }
 }
-// Función 3:
-// valor por defecto "1234"
-// Imprimir en consola la suma total de todos los digitos de una cantidad 
-// p.ej. "1234" -> 10
 
-
-// Función 4:
-// valor por defecto 3 y 5, sino el que ponga el usuario 
-// Imprimir en consola la suma de los múltiplos de 3 y 5 contenidos entre el 1 y 100
-// -> 233168
-function multiplo35(a=3,b=5){
-    let mult = 0
-    for(i = 1; i <= 100; i++){
-        if(i % a === 0 || i % b === 0){
-            mult += + i
-        }
-    }
-    console.log(`La suma de los mutliplos es = ${mult}`)
+/**
+ * Escribir un arrow function que compruebe
+ * si una oración es un palindromo
+ * hint: https://ricardometring.com/javascript-replace-special-characters
+ * hint: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse
+ */
+const palindrome = (pal='Isáac no ronca así') => {
+    let normal = pal.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/([^\w]+|\s+)/g, '')
+    let wr = normal.split('').reverse().join('')
+    return normal === wr ? true : false
 }
+
+/**
+ * Escribir un arrow function que tome como parametro 2 arrays, 
+ * y devuelva un numero con la suma total de esos 2 arrays.
+ * arrayReduce( [1,2,3,4], [1,2]) 
+ * -> 13
+ * 
+ * hint: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/concat
+ * hint: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach
+ * 
+*/
+const array1 = [1, 2, 3, 4]
+const array2 = [1, 2]
+
+const addArrays = (array1, array2) => {
+    let add = 0
+    let mix = array1.concat(array2)
+    mix.forEach(adding)
+    const adding => add +=
+}
+
+/**
+ * Escribir una función que tome como parametro 2 arrays, y devuelva un array 
+ * con los numeros repetidos en los 2 arrays
+ * arrayReduce([1,2,3,4],[1,2,5]). 
+ * -> [1,2]
+*/
+// const array3 = [1, 2, 3, 4]
+// const array4 = [1, 2, 5]
+
+// const addArrays = () => {
+
+// }
