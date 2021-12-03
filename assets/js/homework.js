@@ -1,56 +1,64 @@
+// 1. Generar una function
+// que reciba un array como parametro
+// y devuelva solo los items que son pares
+// p.ej. onlyEvenValues( [1, 2, 3, 4] )
+// -> [2, 4]
+// Aplicar el metodo .forEach()
+// hint: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push
+
+const onlyEvenValues = arrNumbers => {
+    let even = []
+        arrNumbers.forEach(element => {
+            if( element % 2 === 0){            
+                even.push(element)
+            }
+        }
+    )
+    return even
+}
+console.log(onlyEvenValues( [2,3,4,5,6,7,8,30,45,44] ))
+
+
+
+// 2. function que reciba como parametro una array de strings
+// y devuelva la primer y ultima letra del string
+// de cada uno de los items del array 
+// -> firstAndLast (['hola', 'mundo'] )
+// -> ['ha', 'mo']
+// .forEach() o .map()
+
+const firstAndLast = arrStrings => {
+    let modify = []
+        arrStrings.forEach( word => {
+            modify.push(word.slice(0,1) + word.slice(-1))
+        }
+        )
+    return modify
+}
+console.log(firstAndLast())
+
 /**
- * Escribir un arrow function que invierta una oracion
- * hint: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse
- * hint: https://www.w3schools.com/jsref/jsref_join.asp
+ * 3. Funcion que reciba un array de numeros
+ * y devuelva el promedio
+ * -> getAverage( [10, 8, 9, 7] )
+ * -> 8.5
  */
-const sentenceReverse = (sentence='Esta es una función que invierte la oración') => {
-    let wordsSentence = sentence.split('')
-    let reversed = wordsSentence.reverse().join('')
-    return reversed
+
+const getAverage = (arr) => {
+    let addit = 0
+    arr.forEach( item => addit += item)   
+    return (addit/arr.length)
+}
+console.log(getAverage( [10,10,10] ))
+
+//  4. funcion
+// dado un array de años, filtre los elementos
+// y devuelva un array con los años que son bisiesto
+// convertLeapYear( [1990, 2000, 2001, 2020] )
+// -> [2000,2020]
+// .forEach()
+// hint: https://docs.microsoft.com/es-es/office/troubleshoot/excel/determine-a-leap-year
+
+const convertLeapYear = arr => {
     
 }
-
-/**
- * Escribir un arrow function que compruebe
- * si una oración es un palindromo
- * hint: https://ricardometring.com/javascript-replace-special-characters
- * hint: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse
- */
-const palindrome = (pal='Isáac no ronca así') => {
-    let normal = pal.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/([^\w]+|\s+)/g, '')
-    let wr = normal.split('').reverse().join('')
-    return normal === wr ? true : false
-}
-
-/**
- * Escribir un arrow function que tome como parametro 2 arrays, 
- * y devuelva un numero con la suma total de esos 2 arrays.
- * arrayReduce( [1,2,3,4], [1,2]) 
- * -> 13
- * 
- * hint: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/concat
- * hint: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach
- * 
-*/
-const array1 = [1, 2, 3, 4]
-const array2 = [1, 2]
-
-const addArrays = (array1, array2) => {
-    let add = 0
-    let mix = array1.concat(array2)
-    mix.forEach(adding)
-    const adding => add +=
-}
-
-/**
- * Escribir una función que tome como parametro 2 arrays, y devuelva un array 
- * con los numeros repetidos en los 2 arrays
- * arrayReduce([1,2,3,4],[1,2,5]). 
- * -> [1,2]
-*/
-// const array3 = [1, 2, 3, 4]
-// const array4 = [1, 2, 5]
-
-// const addArrays = () => {
-
-// }
