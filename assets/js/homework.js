@@ -1,64 +1,40 @@
-// 1. Generar una function
-// que reciba un array como parametro
-// y devuelva solo los items que son pares
-// p.ej. onlyEvenValues( [1, 2, 3, 4] )
-// -> [2, 4]
-// Aplicar el metodo .forEach()
-// hint: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push
+/** 
+ * Dado un arreglo con nombres de personas, 
+ * devuele un arreglo con los nombres de las personas que empiezan con vocales (capitalizados)
+ * onlyNamesVowels( ['jorge','ana','ivan','sergio','luis','oscar' ] )
+ * -> ['Ana','Ivan','Oscar']
+*/
+// const arr = [ ['jorge','ana','ivan','sergio','luis','oscar'] ]
 
-const onlyEvenValues = arrNumbers => {
-    let even = []
-        arrNumbers.forEach(element => {
-            if( element % 2 === 0){            
-                even.push(element)
-            }
-        }
-    )
-    return even
-}
-console.log(onlyEvenValues( [2,3,4,5,6,7,8,30,45,44] ))
+// const onlyNamesVowels = (arr) => {
+// return arr.filter( item => typeof item === 'string')
+// .map( item => item.slice(0,1).toUpperCase() + item.slice(1).toLowerCase() )
+// .filter( item => item[0] === 'A' || item[0] === 'E' || item[0] === 'I' || item[0] === 'O' || item[0] === 'U')
+// }
 
-
-
-// 2. function que reciba como parametro una array de strings
-// y devuelva la primer y ultima letra del string
-// de cada uno de los items del array 
-// -> firstAndLast (['hola', 'mundo'] )
-// -> ['ha', 'mo']
-// .forEach() o .map()
-
-const firstAndLast = arrStrings => {
-    let modify = []
-        arrStrings.forEach( word => {
-            modify.push(word.slice(0,1) + word.slice(-1))
-        }
-        )
-    return modify
-}
-console.log(firstAndLast())
 
 /**
- * 3. Funcion que reciba un array de numeros
- * y devuelva el promedio
- * -> getAverage( [10, 8, 9, 7] )
- * -> 8.5
+ * 
+ * Dado una arreglo compuesto por arreglos, 
+ * crea una funcion que calcule la suma de los arreglos y posteriormente la suma de las sumas
+ * additionMultiArr(  [	[1,2,3] , [1,3,2] , [3,2,1] ] )
+ * 
  */
+const arr = [ [1,2,3], [1,3,2], [3,2,1] ]
 
-const getAverage = (arr) => {
-    let addit = 0
-    arr.forEach( item => addit += item)   
-    return (addit/arr.length)
-}
-console.log(getAverage( [10,10,10] ))
+let resultado = []
+arr.map(item =>{
+    resultado.push(item.reduce((acc,cv) => acc + cv))    
+    }, 0)
 
-//  4. funcion
-// dado un array de años, filtre los elementos
-// y devuelva un array con los años que son bisiesto
-// convertLeapYear( [1990, 2000, 2001, 2020] )
-// -> [2000,2020]
-// .forEach()
-// hint: https://docs.microsoft.com/es-es/office/troubleshoot/excel/determine-a-leap-year
+console.log (resultado)
 
-const convertLeapYear = arr => {
-    
-}
+let sumTotal = resultado.reduce((acc,cv) => acc +cv)
+
+console.log(sumTotal)
+
+// const additionMultiArr = (arr) => {
+//     return arr.map(item =>{
+//         resultado.push(item.reduce((acc,cv) => acc + cv))    
+// }, 0)
+// }
