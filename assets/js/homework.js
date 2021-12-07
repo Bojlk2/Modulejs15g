@@ -1,40 +1,74 @@
-/** 
- * Dado un arreglo con nombres de personas, 
- * devuele un arreglo con los nombres de las personas que empiezan con vocales (capitalizados)
- * onlyNamesVowels( ['jorge','ana','ivan','sergio','luis','oscar' ] )
- * -> ['Ana','Ivan','Oscar']
-*/
-// const arr = [ ['jorge','ana','ivan','sergio','luis','oscar'] ]
+// Ejercicio 1
+// dado el siguiene array de objetos
+let users = [
+    { firstName: 'Bradley', lastName: 'Bouley', role: 'Full Stack Resident' },
+    { firstName: 'Chloe', lastName: 'Alnaji', role: 'Full Stack Resident' },
+    { firstName: 'Jonathan', lastName: 'Baughn', role: 'Enterprise Instructor' },
+    { firstName: 'Michael', lastName: 'Herman', role: 'Lead Instructor' },
+    { firstName: 'Robert', lastName: 'Hajek', role: 'Full Stack Resident' },
+    { firstName: 'Wes', lastName: 'Reid', role: 'Instructor'},
+    { firstName: 'Zach', lastName: 'Klabunde', role: 'Instructor'}
+]
 
-// const onlyNamesVowels = (arr) => {
-// return arr.filter( item => typeof item === 'string')
-// .map( item => item.slice(0,1).toUpperCase() + item.slice(1).toLowerCase() )
-// .filter( item => item[0] === 'A' || item[0] === 'E' || item[0] === 'I' || item[0] === 'O' || item[0] === 'U')
-// }
+// obtener un nuevo objeto con esta estructura
+//-> {
+//    'Bradley Bouley': 'Full Stack Resident',
+//   'Chloe Alnaji': 'Full Stack Resident'
+//      ....
+//   }
+// hint: .reduce() o .forEach()
+const nameRole = (arr) => {
+    let nr = []
+    arr.forEach(element => {
+       nr.push( `${element.firstName} ${element.lastName}: ${element.role}` ) 
+    })
+    return nr
+}
+console.log(nameRole(users))
 
+const nlRole = (arr) => arr.reduce((acc, cv) => `${acc}${cv.firstName} ${cv.lastName}: ${cv.role}, `, [])
+console.log(nlRole(users))
+// Ejercicio 2:
+//  tomando el array users,
+//  hacer una funcion que reciba 2 parametros (arrayUsers, role)
+//  y retorne un array con los usuarios que cumplan con el role
+// -> filterUserByRole(arrayUsers, 'Instructor')
+// ->   [
+//          { firstName: 'Wes', lastName: 'Reid', role: 'Instructor'},
+//          { firstName: 'Zach', lastName: 'Klabunde', role: 'Instructor'}
+//      ]
+// hint: .filter()
+const filterUserByRole = (arr, role) => {
+    return arr.filter(arr => arr.role === role)
+}
 
-/**
- * 
- * Dado una arreglo compuesto por arreglos, 
- * crea una funcion que calcule la suma de los arreglos y posteriormente la suma de las sumas
- * additionMultiArr(  [	[1,2,3] , [1,3,2] , [3,2,1] ] )
- * 
- */
-const arr = [ [1,2,3], [1,3,2], [3,2,1] ]
+console.log(filterUserByRole(users, 'Instructor'))
 
-let resultado = []
-arr.map(item =>{
-    resultado.push(item.reduce((acc,cv) => acc + cv))    
-    }, 0)
+// Ejercicio 3
+// tomando el siguiente array de objetos
+// filtrar lo siguiente
+// 1. Cantidad de personas que votaron
+// 2. Cual es el promedio de Edad de los votantes
 
-console.log (resultado)
+let persons = [
+    {name:'Bob' , age: 30, voted: true},
+    {name:'Jake' , age: 32, voted: true},
+    {name:'Kate' , age: 25, voted: false},
+    {name:'Sam' , age: 20, voted: false},
+    {name:'Phil' , age: 21, voted: true},
+    {name:'Ed' , age: 55, voted:true},
+    {name:'Tami' , age: 54, voted:true},
+    {name:'Mary', age: 31, voted: false},
+    {name:'Becky', age: 43, voted: false},
+    {name:'Joey', age: 41, voted: true},
+    {name:'Jeff', age: 30, voted: true},
+    {name:'Zack', age: 19, voted: false}
+]
 
-let sumTotal = resultado.reduce((acc,cv) => acc +cv)
+const ageAverage = (arr) => {
+    let numVotet = arr.filter(arr => arr.voted === true)
+    let averageVoted = numVotet.reduce((acc, cv) => (acc + cv.age), 0) / numVotet.length
+    return `Personas que votaron: ${numVotet.length}\nPromedio de edad de los votantes: ${averageVoted}`
+}
+console.log(ageAverage(persons))
 
-console.log(sumTotal)
-
-// const additionMultiArr = (arr) => {
-//     return arr.map(item =>{
-//         resultado.push(item.reduce((acc,cv) => acc + cv))    
-// }, 0)
-// }
