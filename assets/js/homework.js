@@ -1,74 +1,98 @@
-// Ejercicio 1
-// dado el siguiene array de objetos
-let users = [
-    { firstName: 'Bradley', lastName: 'Bouley', role: 'Full Stack Resident' },
-    { firstName: 'Chloe', lastName: 'Alnaji', role: 'Full Stack Resident' },
-    { firstName: 'Jonathan', lastName: 'Baughn', role: 'Enterprise Instructor' },
-    { firstName: 'Michael', lastName: 'Herman', role: 'Lead Instructor' },
-    { firstName: 'Robert', lastName: 'Hajek', role: 'Full Stack Resident' },
-    { firstName: 'Wes', lastName: 'Reid', role: 'Instructor'},
-    { firstName: 'Zach', lastName: 'Klabunde', role: 'Instructor'}
-]
+/**
+ * Ejercicio 1.
+ * Dado un objeto inicial, hacer los siguientes puntos 
+ * 
+ * 1. Agregar el lenguaje 'Go' a la lista de lenguajes
+ * 2. Cambiar el nivel a 4
+ * 3. Eliminar la propiedad avatar
+ * 4. Agregar una nueva propiedad de edad y poner el valor de 30
+ * 5. Imprimir en consola todos los lenguajes dominados
+ * 6. Clonar el objeto en uno nuevo
+ * 7. Imprimir en consola el nuevo objeto
+ * 
+ * hint https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax
+ */
 
-// obtener un nuevo objeto con esta estructura
-//-> {
-//    'Bradley Bouley': 'Full Stack Resident',
-//   'Chloe Alnaji': 'Full Stack Resident'
-//      ....
-//   }
-// hint: .reduce() o .forEach()
-const nameRole = (arr) => {
-    let nr = []
-    arr.forEach(element => {
-       nr.push( `${element.firstName} ${element.lastName}: ${element.role}` ) 
-    })
-    return nr
-}
-console.log(nameRole(users))
-
-const nlRole = (arr) => arr.reduce((acc, cv) => `${acc}${cv.firstName} ${cv.lastName}: ${cv.role}, `, [])
-console.log(nlRole(users))
-// Ejercicio 2:
-//  tomando el array users,
-//  hacer una funcion que reciba 2 parametros (arrayUsers, role)
-//  y retorne un array con los usuarios que cumplan con el role
-// -> filterUserByRole(arrayUsers, 'Instructor')
-// ->   [
-//          { firstName: 'Wes', lastName: 'Reid', role: 'Instructor'},
-//          { firstName: 'Zach', lastName: 'Klabunde', role: 'Instructor'}
-//      ]
-// hint: .filter()
-const filterUserByRole = (arr, role) => {
-    return arr.filter(arr => arr.role === role)
+ let koder = {
+    languages: ["JavaScript", "Python", "Ruby"],
+    isMentor: true,
+    level: 3,
+    avatar: "https://picsum.photos/200/300"
 }
 
-console.log(filterUserByRole(users, 'Instructor'))
+/**
+ * Ejercicio 2:
+ * Escribir una funcion que reciba un parametro
+ * Verificar si el parametro es un objeto
+ * o si es un array
+ * p.ej.  
+ * ·> isAnObjectOrArray( [1,2,3] )
+ * -> 'Es un array'
+ * ·> isAnObjectOrArray( {key:'value'} )
+ * -> 'Es un Objeto'
+ * ·> isAnObjectOrArray( 'Hola mundo' )
+ * -> 'No es un array ni un objeto'
+ * 
+ * 
+ * params {Object}, [Array] ,'string' - Estructura que se quiere validar
+ * return 'String' - mensaje de respuesta
+ * 
+ * hint https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof
+ * hint https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/isArray
+ * 
+ */
 
-// Ejercicio 3
-// tomando el siguiente array de objetos
-// filtrar lo siguiente
-// 1. Cantidad de personas que votaron
-// 2. Cual es el promedio de Edad de los votantes
-
-let persons = [
-    {name:'Bob' , age: 30, voted: true},
-    {name:'Jake' , age: 32, voted: true},
-    {name:'Kate' , age: 25, voted: false},
-    {name:'Sam' , age: 20, voted: false},
-    {name:'Phil' , age: 21, voted: true},
-    {name:'Ed' , age: 55, voted:true},
-    {name:'Tami' , age: 54, voted:true},
-    {name:'Mary', age: 31, voted: false},
-    {name:'Becky', age: 43, voted: false},
-    {name:'Joey', age: 41, voted: true},
-    {name:'Jeff', age: 30, voted: true},
-    {name:'Zack', age: 19, voted: false}
-]
-
-const ageAverage = (arr) => {
-    let numVotet = arr.filter(arr => arr.voted === true)
-    let averageVoted = numVotet.reduce((acc, cv) => (acc + cv.age), 0) / numVotet.length
-    return `Personas que votaron: ${numVotet.length}\nPromedio de edad de los votantes: ${averageVoted}`
+const isAnObjectOrArray = (element) => {
+    if(Array.isArray(element) === true){
+        return (`Es un array`)
+    }else if(typeof (element) === 'object'){
+        return(`Es un objeto`)
+    }else{
+        return(`No es un array ni un objeto`)
+    }
 }
-console.log(ageAverage(persons))
 
+
+/**
+ * Ejercicio 3.
+ * Realizar una funcion que tome como parametro un objeto
+ * y devuelva un array de arrays con la siguiente estructura
+ * [ [key, value], [key, value] ]
+ * Resultado esperado: makePairs({ a: 1, b: 2 }) => [['a', 1], ['b', 2]]
+ * 
+ * params {Object} object - El objeto que queremos transformar
+ * return [Array] - El array que se espera retornar
+ * 
+ * hint https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/entries
+ * hint https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map
+ * 
+ * Se tiene que realizar 2 soluciones, 1 con Object.entries() y otra con .map()
+ */
+const makePairs = (object) => {
+    
+}
+
+
+/**
+ * Ejercicio 4:
+ * Realizar una funcion que tome como parametro un string
+ * y retorne un array con todos caracteres del string
+ * 
+ * Resultado esperado: 
+ * ·> splitString('hola mundo')
+ * ·> ['h','o','l','a',' ','m','u','n','d','o']
+ * 
+ * params 'String' - El String que queremos transformar
+ * return [Array] - El array que se espera retornar
+ * 
+ * 
+ * hint https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax
+ */
+
+const splitString = (str) => {return split = str.split('')}
+
+console.log(splitString('hola mundo'))
+
+const splitString1 = (str) => [...str]
+
+console.log(splitString1('hola mundo'))
