@@ -1,28 +1,43 @@
-let salarios = {
-    'Jorge': 3000,
-    'Juan': 7000,
-    'Pedro': 8000
-}
-
-const addSal = (obj) => {
-    let add = 0
-    Object.keys(obj).forEach( (value) => {
-        let salario = obj[value]
-        add += salario
-        
-    })
-    return add
-}
-console.log(addSal(salarios))
-
-const addRed = (obj) => {
-    return total = Object.keys(obj).reduce((acc, key) => acc += obj[key],0)
-}
-console.log(addRed(salarios))
-// 
-//     console.log(add)
+let koder = {
+    name: 'Jorge',
+    lastName: 'Camarillo',
+    age: 30,
+    average: [ 10, 10, 10, 8, 9 ],
     
-const valRed = (obj) => {
-    return suma = Object.values(obj).reduce((acc, cv) => acc += cv, 0 )
 }
-console.log(valRed(salarios))
+
+koder.getAverage = function () {
+    return this.average.reduce(( acc, cv ) => {
+        return acc + cv
+    }, 0) / this.average.length
+}
+
+console.log(koder.getAverage())
+
+koder.setAverage = function () {
+    this.totalAverage = this.getAverage()
+}
+
+koder.setAverage()
+
+koder.setGetIMC = function () {
+    this.peso = 57
+    this.altura = 1.5
+    this.IMC = this.peso/this.altura**2
+}
+
+koder.setGetIMC()
+
+// Agregar un metodo para Agregar un nuevo promedio
+koder.setNewAve = function () {
+    this.average.push(10)
+}
+
+
+
+// Agregar un metodo para agregar una nueva propiedad 
+koder.addNewProperty = function (key, value) {
+    this[key] = value
+}
+
+koder.addNewProperty('nationality', 'Mexican')
