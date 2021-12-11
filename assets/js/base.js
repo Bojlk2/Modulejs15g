@@ -1,43 +1,99 @@
-let koder = {
-    name: 'Jorge',
-    lastName: 'Camarillo',
-    age: 30,
-    average: [ 10, 10, 10, 8, 9 ],
-    
+/**
+ * Selecionar elementos
+ * 
+ * 1. Selecionar por ID
+ */
+
+//  1. Selecionar por ID
+// document.getElementById('head__title') 
+// document.getElementsByTagName('li')
+// document.getElementsByClassName('link__menu')
+
+// document.querySelector('#head__title')
+// document.querySelector('li')
+// document.querySelector('.link__menu')
+// document.querySelectorAll('.link__menu')
+// // document.querySelectorAll('')
+
+// /**
+//  * Obtener atributos
+//  * Setear atributos
+//  */
+
+// // get
+// let title = document.querySelector('#head__title').getAttribute('data-title')
+// let level = document.querySelector('#head__title').getAttribute('data-level')
+
+// // set
+// document.querySelector('#head__title').setAttribute('data-custom','random')
+// // reemplazando clases 
+// document.querySelector('#head__title').setAttribute('class','trees cuatro')
+
+// // Agregar clases
+// document.querySelector('#head__title').classList.add('clase3')
+// // remover clases
+// document.querySelector('#head__title').classList.remove('clase2')
+
+// // comprobar si existe un atributo
+// document.querySelector('#head__title').hasAttribute('class')
+
+
+// comprobar si el titulo tiene class
+/**
+ * Si si, comprobar 
+ * ---si tiene la clase "clase1 clase2"
+ * ----- Agregar la "clase 3"
+ * ---sino 
+ * ----- Agregar la clase "custom"
+ */
+if(document.querySelector('#head__title').hasAttribute('class') ) {
+    if ( document.querySelector('#head__title').getAttribute('class') === 'clase1 clase2' ) {
+        document.querySelector('#head__title').classList.add('class3')
+    } else {
+        document.querySelector('#head__title').classList.add('custom')
+    }
 }
 
-koder.getAverage = function () {
-    return this.average.reduce(( acc, cv ) => {
-        return acc + cv
-    }, 0) / this.average.length
-}
+let ulElement = document.createElement('ul')
+// <ul></ul>
 
-console.log(koder.getAverage())
+let liFirst = document.createElement('li')
+// <li></li>
+liFirst.textContent = 'item 1'
+// <li>item 1</li>
+ulElement.appendChild(liFirst)
+// <ul> <li>item 1</li> </ul>
 
-koder.setAverage = function () {
-    this.totalAverage = this.getAverage()
-}
+let liSecond = document.createElement('li')
+// <li></li>
+liSecond.textContent = 'item 2'
+// <li>item 2</li>
+ulElement.appendChild(liSecond)
+// <ul> <li>item 1</li> <li>item 2</li> </ul>
 
-koder.setAverage()
+document.getElementsByTagName('body')[0].appendChild(ulElement)
+// body -> <ul> <li>item 1</li> <li>item 2</li> </ul>
 
-koder.setGetIMC = function () {
-    this.peso = 57
-    this.altura = 1.5
-    this.IMC = this.peso/this.altura**2
-}
-
-koder.setGetIMC()
-
-// Agregar un metodo para Agregar un nuevo promedio
-koder.setNewAve = function () {
-    this.average.push(10)
-}
-
+let ulist = document.createElement('ul')
+let liste = document.createElement('li')
+liste.textContent = 'Home'
+ulist.appendChild(liste)
+let list1 = document.createElement('li')
+list1.textContent = 'Products'
+ulist.appendChild(list1)
+let list2 = document.createElement('li')
+list2.textContent = 'About Us'
+ulist.appendChild(list2)
+document.querySelector('ul').classList.add('menu')
 
 
-// Agregar un metodo para agregar una nueva propiedad 
-koder.addNewProperty = function (key, value) {
-    this[key] = value
-}
 
-koder.addNewProperty('nationality', 'Mexican')
+
+document.querySelector('li').classList.add('item_menu')
+
+
+document.getElementsByTagName('body')[0].appendChild(ulist)
+
+
+
+
