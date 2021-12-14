@@ -11,9 +11,39 @@
 <body>
     <header class="Header1"></header>
     <h1>DOM Manipulation</h1>
-    
 
-    <script src="/assets/js/homework.js"></script>
+    <form action="">
+        <input type="text" id="username" placeholder="nombre original">
+        <input type="text" id="usernamereversed" placeholder="nombre al reves">
+        <button type="button" onclick="reverseUser()" >reversed!</button>
+    </form>
+    
+    <input type="text" id="name__city" placeholder="Coloca una ciudad" onkeyup="filterCity()">
+    <ul id="listCity">
+        
+    </ul>
+
+<form action="" class='form-filter'>
+    <select name="" id="filterby" onchange="changeFilter()">
+        <option disabled selected>Busqueda por:</option>
+        <option value="name">Nombre</option>
+        <option value="age">Edad</option>
+        <option value="city">Ciudad</option>
+    </select>
+    <input type="text" id="name__koder" placeholder="Coloca un nombre" onkeyup="filterKoder()" style="display: none">
+    <ul id="listKoders">
+        
+    </ul>
+    <input type="text" id="age__koder" placeholder="Coloca la edad" onkeyup="filterKoderAge()" style="display: none">
+    <ul id="listKodersAge">
+        
+    </ul>
+    <input type="text" id="city__koder" placeholder="Coloca la ciudad" onkeyup="filterKoderCity()" style="display: none">
+    <ul id="listKodersCity">
+        
+    </ul>
+</form>
+    <script src="/assets/js/base.js"></script>
     
 </body>
 </html>
