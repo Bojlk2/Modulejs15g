@@ -1,106 +1,81 @@
+// ejercicio
+// Agregar a 5 koders mas
+// pintarlos en el DOM
+// 1. utilizar bootstrap
+// 2. Que sea responsive
+// 3. minimo 3 cards por row
+
 let koders = [
     {
-        name: 'emilio',
+        name: 'Emilio',
         age: 30,
-        city: 'Guadalajara'
+        city: 'Guadalajara',
+        generacion: 6,
+        typeKoder: 'js',
+        gender: 'M',
+        avatar: 'https://i.pravatar.cc/150?img=3'
     },
     {
-        name: 'juan',
-        age: 32,
-        city: 'Zacatecas'
+        name: 'Juan',
+        age: 30,
+        city: 'Ciudad de méxico',
+        generacion: 6,
+        typeKoder: 'iOS',
+        gender: 'M',
+        avatar: 'https://i.pravatar.cc/150?img=5'
     },
     {
-        name: 'brisset',
-        age: 37,
-        city: 'Lima'
+        name: 'Ismael',
+        age: 30,
+        city: 'Ciudad de méxico',
+        generacion: 15,
+        typeKoder: 'js',
+        gender: 'M',
+        avatar: 'https://i.pravatar.cc/150?img=7'
     },
-    
+    {
+        name: 'Ivonne',
+        age: 30,
+        city: 'Ciudad de méxico',
+        generacion: 15,
+        typeKoder: 'js',
+        gender: 'F',
+        avatar: 'https://i.pravatar.cc/150?img=9'
+    },
+    {
+        name: 'Leo',
+        age: 30,
+        city: 'Ciudad de méxico',
+        generacion: 15,
+        typeKoder: 'js',
+        gender: 'M',
+        avatar: 'https://i.pravatar.cc/150?img=1'
+    },
 ]
 
 
-const orderDesc = (a, b) => {
-    let koderascdesc = document.querySelector('#order').value
-    let KoderTerm = document.querySelector('#filterby').value.toLowerCase()
-    
-    if(koderascdesc === 'desc') { 
-        if (a[KoderTerm] < b[KoderTerm]) {
-            return -1
-        }
-        if (a[KoderTerm] > b[KoderTerm]) {
-            return 1
-        }
-        return 0
-    } else {
-        if (a[KoderTerm] > b[KoderTerm]) {
-            return -1
-        }
-        if (a[KoderTerm] < b[KoderTerm]) {
-            return 1
-        }
-        return 0
-    }
-    console.log(koders.sort(orderDesc))
+const printKoders = () => {
+    cardsKoders = ''
+    koders.forEach((koder) => {
+        cardsKoders += `
+        <div class= 'col-12 col-md-4'>
+            <div class="card align-items-center mb-4 p-3">
+                <img src="${koder.avatar}" class="rounded-circle" alt="${koder.name}">
+                <div class="card-body">
+                    <h5 class="card-Name">Nombre: ${koder.name}</h5>
+                    <p class="card-text">Edad: ${koder.age} años</p>
+                    <p class="card-text">Ciudad: ${koder.city}</p>
+                    <p class="card-text">Generación: ${koder.generacion}</p>
+                    <p class="card-text">Curso: ${koder.typeKoder}</p>
+                    <p class="card-text">Genero: ${koder.gender}</p>
+                </div>
+            </div>
+        </div>`
+})
+document.querySelector('.kardsKoders').innerHTML = cardsKoders
 }
 
-
-// FUncion => tarea especifica
-
-
-const filterKoders = () => {
-    // filtrar ciudades
-    let KoderSearch = document.querySelector('#name__koder').value.toLowerCase()
-    let KoderTerm = document.querySelector('#filterby').value.toLowerCase()
-    console.log(KoderTerm)
-
-    let kodersFiltered = koders.filter( (koder) => {
-        console.log(koder)
-
-        // if( koder.name.toLowerCase().includes(KoderSearch) ){
-        //     return koder  
-        // }
-
-        
-        let koderTerm = typeof koder[KoderTerm] !== 'number' ? koder[KoderTerm].toLowerCase() : koder[KoderTerm]
-        console.log(koderTerm)
-
-        if(KoderTerm === 'age') {
-            if((koderTerm).toString().includes(KoderSearch) === true){
-                return koder
-            }
-        } else  {
-            if(koderTerm.includes(KoderSearch) === true){
-                return koder
-            }
-        }
-    })
-    console.log(kodersFiltered.sort(orderDesc))
-
-    
-    // creo el layout con las ciudades filtradas
-    let lista = ''
-    kodersFiltered.forEach( (koder) => {
-        lista += `
-            <li>
-                <strong>${koder.name}</strong>
-                <span>${koder.age} años</span>
-                <span>${koder.city}</span>
-            </li>
-        `
-    })
-    
-    console.log(lista)
-
-    // agrego el layout
-    document.querySelector('#listKoders').innerHTML = lista
-}
-
-const filterKoder = () => {
-    filterKoders()
-}
-
-
-
-const changeFilter = () => {
-    filterKoders()
-}
-
+let sKod = document.querySelector('.kod')
+sKod.addEventListener('click', () => {
+    printKoders()
+})
