@@ -1,142 +1,37 @@
-let koders = [
-    {
-        name: 'Emilio',
-        age: 30,
-        city: 'Guadalajara'
-    },
-    {
-        name: 'Pedro',
-        age: 30,
-        city: 'Leon'
-    },
-    {
-        name: 'Brisset',
-        age: 37,
-        city: 'Lima'
-    },
-    {
-        name: 'alex',
-        age: 37,
-        city: 'Lima'
-    },
-    {
-        name: 'Brisset',
-        age: 37,
-        city: 'Lima'
+const xhttp = new XMLHttpRequest()
+// Abrir la conexion (empezar a creat el request)
+// xhttp.open(metodo, url)
+xhttp.open( "GET" , "https://jsonplaceholder.typicode.com/users", true)
+// Escuchar cuando el response este listo
+xhttp.onload = function(data) {
+    if(data.target.status === 200){
+        let resp = data.target.response
+        let objResp = JSON.parse(resp)
+        // console.log(res)
+        // console.log(objResp)
+        // imprimir en DOM
+        let gridUser = ''
+        objResp.forEach( element => {
+            gridUser += `            
+            <div class="col-12 col-md-4">
+                <div class="card align-items-center mb-4 p-3 bg-primary bg-gradient text-white" >
+                    <div class="card-body">
+                        <h5 class="card-title">Nombre: ${element.name}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">${element.id}</h6>
+                        <p class="card-text"><strong>Usuario:</strong> ${element.username}</p>
+                        <p class="card-text"><strong>Email:</strong> ${element.email}</p>
+                        <p class="card-text"><strong>Dirección:</strong> ${element.address}</p>
+                        <p class="card-text"><strong>Teléfono:</strong> ${element.phone}</p>
+                        <p class="card-text"><strong>Website:</strong> ${element.website}</p>
+                        <p class="card-text"><strong>Dirección:</strong> ${element.address.street}</p>
+                        <p class="card-text"><strong>Compañia:</strong> ${element.company}</p>
+                    </div>
+                </div>
+            </div>            
+            `
+        });
+        document.querySelector('.row').innerHTML = gridUser
     }
-]
-
-document.addEventListener('onchange', orderArray)
-
-const orderArray = (arr) => {
-    let copyArray = [...arr]
-    
-    let order = document.querySelector('#orderFilter').value
-    
-    let KoderTerm = document.querySelector('#filterby').value
-    if(KoderTerm !== 'age'){
-        if(order == 'asc') {
-            copyArray.sort(function (firstEl, secondEl) {
-                let a = firstEl[KoderTerm].toUpperCase(),
-                b = secondEl[KoderTerm].toUpperCase();
-                //return a == b ? 0 : a > b ? 1 : -1
-                if(a > b) {
-                    return 1
-                } 
-                if (a < b) {
-                    return -1
-                }
-                if(a == b){
-                    return 0
-                }
-            })
-        } else {
-            console.log(KoderTerm)
-            copyArray.sort(function (firstEl, secondEl) {
-                let a = firstEl[KoderTerm].toUpperCase(),
-                b = secondEl[KoderTerm].toUpperCase();
-                // return b == a ? 0 : b > a ? 1 : -1;
-                if(b > a) {
-                    return 1
-                } 
-                if (b < a) {
-                    return -1
-                }
-                if(b == a){
-                    return 0
-                }
-            })
-        }
-    } else {
-        if(order == 'asc'){
-            copyArray.sort( function ( a, b ) { 
-                return a[KoderTerm] - b[KoderTerm]
-            }) 
-        } else {
-            copyArray.sort( function ( a, b ) {
-                console.log(a,b) 
-                return b[KoderTerm] - a[KoderTerm]
-            })
-        }
-    }
-
-    return copyArray
-    
 }
-
-// FUncion => tarea especifica
-const filterKoders = () => {
-    // filtrar ciudades
-    let KoderSearch = document.querySelector('#name__koder').value.toLowerCase()
-    let KoderTerm = document.querySelector('#filterby').value.toLowerCase()
-
-    let kodersFiltered = koders.filter( (koder) => {        
-        let koderTerm = typeof koder[KoderTerm] !== 'number' ? koder[KoderTerm].toLowerCase() : koder[KoderTerm]
-
-        if(KoderTerm === 'age') {
-            if((koderTerm).toString().includes(KoderSearch) === true){
-                return koder
-            }
-        } else  {
-            if(koderTerm.includes(KoderSearch) === true){
-                return koder
-            }
-        }
-    })
-
-    // console.log(kodersFiltered)
-    console.log('koders filtrados')
-    console.log(kodersFiltered)
-
-    let kodersFilteredOrdered = orderArray(kodersFiltered)
-    console.log('koders filtrados y ordenados')
-    console.log(kodersFilteredOrdered)
-
-    // creo el layout con las ciudades filtradas
-    let lista = ''
-    kodersFilteredOrdered.forEach( (koder) => {
-        lista += `
-            <li>
-                <strong>${koder.name}</strong>
-                <span>${koder.age} años</span>
-                <span>${koder.city}</span>
-            </li>
-        `
-    })
-
-    // agrego el layout
-    document.querySelector('#listKoders').innerHTML = lista
-}
-
-
-const orderFilter = () => {
-    filterKoders()
-}
-
-const filterKoder = () => {
-    filterKoders()
-}
-
-const changeFilter = () => {
-    filterKoders()
-}
+// Enviar la peticion
+xhttp.send()
