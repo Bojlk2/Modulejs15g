@@ -16,15 +16,14 @@ xhttp.onload = function(data) {
             <div class="col-12 col-md-4">
                 <div class="card align-items-center mb-4 p-3 bg-primary bg-gradient text-white" >
                     <div class="card-body">
-                        <h5 class="card-title">Nombre: ${element.name}</h5>
+                        <h5 class="card-title text-center">Nombre: ${element.name}</h5>
                         <h6 class="card-subtitle mb-2 text-muted">${element.id}</h6>
                         <p class="card-text"><strong>Usuario:</strong> ${element.username}</p>
                         <p class="card-text"><strong>Email:</strong> ${element.email}</p>
-                        <p class="card-text"><strong>Dirección:</strong> ${element.address}</p>
+                        <p class="card-text"><strong>Dirección:</strong> ${element.address.street}</p>
                         <p class="card-text"><strong>Teléfono:</strong> ${element.phone}</p>
                         <p class="card-text"><strong>Website:</strong> ${element.website}</p>
-                        <p class="card-text"><strong>Dirección:</strong> ${element.address.street}</p>
-                        <p class="card-text"><strong>Compañia:</strong> ${element.company}</p>
+                        <p class="card-text"><strong>Compañia:</strong> ${element.company.name}</p>
                     </div>
                 </div>
             </div>            
