@@ -7,3 +7,7 @@
   font-size: 18px;
 }
 /*# sourceMappingURL=style.css.map */
+
+.bg-lime {
+  background: linear-gradient(90deg, #fcff9e 0%, #c67700 100%);
+}

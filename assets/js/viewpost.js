@@ -14,3 +14,8 @@ window.addEventListener('load', () => {
         })
 
 })
+
+let backButton = document.querySelector('.back_button')
+backButton.addEventListener('click', () => {
+    location.replace('http://127.0.0.1:5500/')
+})

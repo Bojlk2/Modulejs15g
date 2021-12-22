@@ -56,7 +56,7 @@ update__post.addEventListener('click', () => {
         }
     
         // updateUser(postToUpdate, idPost )
-        updateUserFetch(postToUpdate, idPost )
+        updateFetch(postToUpdate, idPost )
     } else {
         alert('Algunos datos estan vacios')
     }
